@@ -1,0 +1,13 @@
+<html>
+<script language="javascript" type="text/javascript">
+    function OpenPopupCenter(pageURL, title, w, h) {
+        var left = (screen.width - w) / 2;
+        var top = (screen.height - h) / 4;  // for 25% - devide by 4  |  for 33% - devide by 3
+        var targetWin = window.open('popup.html', title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+    }
+</script>
+</head>
+<body>
+<button onclick="OpenPopupCenter('popup.html', 'TEST!?', 600, 400);">click on me</button>
+</body>
+</html>

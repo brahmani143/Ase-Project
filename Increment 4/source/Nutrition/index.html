@@ -1,0 +1,55 @@
+<html ng-app="demoMongo" ng-controller="MongoRestController" class="h1">
+<head >
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+    <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
+    <style>
+        .reg{
+            background-image: url("http://st.depositphotos.com/2444995/3965/i/950/depositphotos_39652341-stock-photo-mix-of-fresh-berries-in.jpg");
+        }
+    </style></head>
+
+<body class="reg">
+<br>
+<div style="text-align: center;font-size: 30px;color: #F44336;">
+    Welcome
+</div>
+<br>
+<div class="b1">
+    <form class="contact_form"  ng-submit="insertData(formData.fname,formData.lname,formData.email,formData.password,formData.confirm)" name="contact_form">
+        <div class="login-card" >
+            <h2 style="text-align: center;color: white"> Registration</h2>
+            <div class="a1"> <input type="text" name="fname" placeholder="First Name" ng-model="formData.fname" required /></div>
+            <br>
+            <div class="a1"> <input type="text"  name="lname" ng-model="formData.lname" placeholder="Last Name" required /></div>
+            <br>
+            <div class="a1"><input type="text" name="email" placeholder="Email" ng-model="formData.email" required/></div>
+            <br>
+            <div class="a1"> <input type="password" name="password"  ng-model="formData.password" placeholder="password"></div>
+            <br>
+            <div class="a1"> <input type="password" name="confirm"  ng-model="formData.confirm" placeholder="Confirm Password"></div>
+            <br>
+            <div class="f6"> <input type="submit" class="button" name="Sign In"  value="Register" style="color: black" onclick="go()"/></div>
+
+        </div>
+
+    </form>
+    <div class="b3">
+
+        <script>
+            function go() {
+                window.location='home.html';
+            }
+        </script>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://code.angularjs.org/1.1.1/angular.js"></script>
+<script type="text/javascript" src="http://code.angularjs.org/1.1.1/angular-resource.js"></script>
+<script type="text/javascript" src="http://code.angularjs.org/1.1.1/angular-sanitize.js"></script>
+<script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+<script src="app.js"></script>
+<link rel="stylesheet" href="index_CSS.css" type="text/css">
+</body>
+</html>

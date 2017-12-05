@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <style>
+
+        .menu input{
+            width: 280px;
+            background: transparent;
+            border: 2px solid #428bca;
+            border-radius: 4px;
+            color: #5e5e5e;
+            font-family: 'Exo', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .menu button{
+            width: 180px;
+            height:40px;
+            background:#428bca;
+            border:  2px solid #ffffff;
+            cursor: pointer;
+            border-radius: 4px;
+            color: #ffffff;
+            font-family: 'Exo', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 6px;
+            margin-top: 10px;
+        }
+        table {
+            max-width: 960px;
+            margin: 10px auto;
+            border: 1px solid #FFF;
+        }
+
+        caption {
+            font-size: 1.6em;
+            font-weight: 400;
+            padding: 10px 0;
+        }
+
+       
+
+        tfoot td {
+            padding: 10px 2px;
+            font-size: 0.8em;
+            font-style: italic;
+            color: #8a97a0;
+        }
+		
+		
+	
+		
+    </style>
+
+</head>
+<body class="body">
+
+
+<div  ng-controller="View1Ctrl" style="top: 200px">
+    <div class="menu" id="div_SearchContainer">
+        <h1 align="absolute" style="text-align: center; color: #5cb85c">Search for the GYM's  near by</h1>
+        <input type="text" id="txt_placeName" placeholder="Enter the place you want to search" style="margin-left: 400px ;margin-right=20px;"/>
+        <button id="btn_getReview" ng-click="getVenues()">Get Venues</button>
+    </div>
+    <div id="div_VenueList">
+       <img  id="img1"src="https://d13yacurqjgara.cloudfront.net/users/576057/screenshots/2367607/48_animations_dribbble.gif" border="0" alt="GYM" width="400" height="300" style="padding-left:380px;padding-top:70px;"/>
+        <ul>
+            <li ng-repeat="x in results" style="font-size: ; color: #000; text-align: center; list-style: none; list-style-position:inside;">
+           <p > <span >Name:</span> {{x.name}}
+		   </br>
+		     Adress:{{x.id}}
+		   </p>
+            
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script >
+    angular.module('myApp', [])
+        .controller('View1Ctrl', function ($scope, $http) {
+            $scope.results = new Array();
+
+            $scope.getVenues = function () {
+                var placeEntered = document.getElementById("txt_placeName").value;
+                alert(placeEntered);
+                {                alert("hello");
+                    //This is the API that gives the list of venues based on the place and search query.
+                    $http.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=39.0997265,-94.5785667&radius=500&type=gym&key=AIzaSyCNt-ShhFX0jz3fNOKF1D1XcEV-L6j18cI').success(function (data) {
+                        alert(data.results[0].name);
+                        if (data != null && data.results != null ) {
+                            for (var i = 0; i < 5; i++) {
+
+                                $scope.results[i] = {
+                                    "name": data.results[i].name,
+
+                                    "id": data.results[i].vicinity
+                                };
+                            }
+                        }
+
+                    })
+
+                }
+				
+				document.getElementById("img1").style.display = 'none';
+            }
+
+        });
+</script>
+</body>
+</html>

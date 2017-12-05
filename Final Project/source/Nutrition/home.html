@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="" >
+<head>
+    <link href="css.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<style>
+    fieldset{
+        border :1px solid grey;
+        padding:10px 10px 10px 10px;
+    }
+    body{
+        background-color: #F7F7F7;
+    }
+
+</style>
+
+</head>
+<body data-ng-app="Food" >
+
+<nav class="navbar navbar-default navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Fitness dairy</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ><a href="#">Home</a></li>
+
+                <!--<li class="dropdown">
+                    <a href="#" cliikiass="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>-->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                   <p style = "color:blue;font-size:15px;font-weight: 300; padding-top:15px;padding-right: 10px;">Hi Brahmani</P>
+                </li>
+
+                <li ><a href="#" onclick="move()">Logout</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="tab">
+
+    <a href="javascript:void(0)" class="tablinks active" onclick="openCity(event, 'diet')">Diets</a>
+    <a href="javascript:void(0)" class="tablinks " onclick="openCity(event, 'lunch')">Food</a>
+    <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Recepie')">Recepie Search</a>
+    <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Tokyo')">Exercise</a>
+
+    <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'GYM')">Gym Finder</a>
+    <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'London')">Reports</a>
+</div>
+<div id="diet" class="tabcontent" data-ng-controller="FoodCalorie" style="background-color:#F7F7F7; text-align: center;display:block;">
+
+    <style>
+        .mySlides {display:none;}
+    </style>
+    <div class="w3-container">
+        <h2 style="font-size:35px;color:#496ebc;font-weight: 500;">Popular Diets</h2>
+
+    </div>
+
+    <div class="w3-content w3-section" style="max-width:900px">
+        <img class="mySlides w3-animate-left" src="http://www.dietplan-101.com/wp-content/uploads/2013/08/atkins-diet-food-list.png" style="width:100%; height:500px">
+        <img class="mySlides w3-animate-left" src="https://www.plus100years.com/wp-content/uploads/2017/02/mediterranean-diet-pyramid.jpg" style="width:100%;height:500px">
+        <img class="mySlides w3-animate-left" src="https://s-media-cache-ak0.pinimg.com/originals/66/39/e0/6639e079325a8e5b737ca794119658c8.jpg" style="width:100%;height:500px">
+
+        <img class="mySlides w3-animate-left" src="https://ukhealthcare.uky.edu/uploadedImages/services-treatments/gill-heart/For_Patients/Resources/Publications/dash-diet.jpg" style="width:100%;height:500px">
+
+        <img class="mySlides w3-animate-left" src="http://www.dietplan-101.com/wp-content/uploads/2010/09/zone-diet.png" style="width:100%; height:500px">
+    </div>
+
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) {myIndex = 1}
+            x[myIndex-1].style.display = "block";
+            setTimeout(carousel, 2500);
+        }
+    </script>
+        </div>
+<div id="London" class="tabcontent">
+
+    <canvas id="myChart" ></canvas>
+
+
+    <script>
+    {
+        Chart.defaults.global.defaultFontSize=35;
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+    labels: ['4/27/2017', '4/28/2017', '4/29/2017', '4/30/2017', '5/1/2017', '5/2/2017', '5/3/2017'],
+    datasets: [
+    {
+    label: "Progress",
+        fillColor: "rgba(252,147,65,0.5)",
+
+    lineTension: 0.1,
+    backgroundColor: "rgba(75,192,192,0.4)",
+    borderColor: "rgba(75,192,192,1)",
+    borderCapStyle: 'butt',
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderJoinStyle: 'miter',
+    pointBorderColor: "rgba(75,192,192,1)",
+    pointBackgroundColor: "#fff",
+    pointBorderWidth: 2,
+    pointHoverRadius: 5,
+    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+    pointHoverBorderColor: "rgba(220,220,220,1)",
+    pointHoverBorderWidth: 2,
+    pointRadius: 1,
+    pointHitRadius: 10,
+    data: [1509.87, 902.81, 1025.32, 1079.81, 1099.21, -28.31, -101.34],
+
+    spanGaps: false,
+    }
+    ]
+
+    },
+        options: {
+            title: {
+                display: true,
+                text: 'Overall calorie consumption'
+            },
+
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+
+                    }
+                }]
+            }
+        }
+
+
+    });
+
+
+
+    }
+    </script>
+
+</div>
+
+<div id="lunch" class="tabcontent" data-ng-controller="FoodCalorie">
+    <center>
+        <div>
+            <h2 style="color:#428bca;" >Consumed Calories &nbsp;{{calories+calories1+calories2+calories3}}</h2>
+        </div>
+        <div  class="panel panel-primary" style="width:800px;">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">BreakFast</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-inline">
+                    <input type="text" class="form-control" name="search" placeholder="Add Breakfast.." data-ng-model="search"/>
+                    <button name="search" class="btn btn-primary" data-ng-click="getNutrition()">Get Calories</button>
+                </div>
+            </div>
+            <table class="table table-bordred table-striped" class="table table-hover" id="dev-table">
+                <tr>
+                    <td class="info">calories:{{calories}}</td>
+                </tr>
+                <tr>
+                    <td>calories from fat:{{nf_calories_from_fat}}</td>
+                </tr>
+                <tr>
+                    <td class="info">total fat:{{nf_total_fat}}</td>
+                </tr>
+
+            </table>
+
+    </div>
+
+            <div  class="panel panel-primary" style="width:800px;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Lunch</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-inline">
+                            <input type="text" class="form-control" name="search1" placeholder="Add Lunch.." data-ng-model="search1"/>
+                            <button name="search1" class="btn btn-primary" data-ng-click="getNutrition1()">Get Calories</button>
+                        </div>
+                    </div>
+                    <table class="table table-bordred table-striped" class="table table-hover">
+                        <tr>
+                            <td class="info">calories:{{calories1}}</td>
+                        </tr>
+                        <tr>
+                            <td>calories from fat:{{calories_from_fat1}}</td>
+                        </tr>
+                        <tr>
+                            <td class="info">total fat:{{total_fat1}}</td>
+                        </tr>
+
+                    </table>
+                </div>
+                    <div  class="panel panel-primary" style="width:800px;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Snacks</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-inline">
+                                    <input type="text" class="form-control" name="search2" placeholder="Add Snacks.." data-ng-model="search2"/>
+                                    <button name="search2" class="btn btn-primary" data-ng-click="getNutrition2()">Get Calories</button>
+                                </div>
+                            </div>
+                            <table class="table table-bordred table-striped" class="table table-hover" >
+                                <tr>
+                                    <td class="info">calories:{{calories2}}</td>
+                                </tr>
+                                <tr>
+                                    <td>calories from fat:{{calories_from_fat2}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="info">total fat:{{total_fat2}}</td>
+                                </tr>
+
+                            </table>
+                    </div>
+
+            <div  class="panel panel-primary" style="width:800px;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Dinner</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-inline">
+                            <input type="text" class="form-control" name="search3" placeholder="Dinner.." data-ng-model="search3"/>
+                            <button name="search3" class="btn btn-primary" data-ng-click="getNutrition3()">Get Calories</button>
+                        </div>
+                    </div>
+                    <table class="table table-bordred table-striped" class="table table-hover" >
+                        <tr>
+                            <td class="info">calories:{{calories3}}</td>
+                        </tr>
+                        <tr>
+                            <td>calories from fat:{{calories_from_fat3}}</td>
+                        </tr>
+                        <tr>
+                            <td class="info">total fat:{{total_fat3}}</td>
+                        </tr>
+
+                    </table>
+                </div>
+        <div>
+            <button name="search4" class="btn btn-primary" data-ng-click="OpenPopupCenter('popup.html', 'TEST!?', 600, 400)">GetNutrition</button>
+        </div>
+
+</Center>
+</div>
+
+<div id="Tokyo" class="tabcontent" data-ng-controller="FoodCalorie">
+    <form id="workout-form" style="width:75%;padding-bottom:20px;padding-left:300px;padding-top:80px;">
+        <fieldset class="units" style="border-bottom-width:0px;background-color:#428bca;" >
+            <div>
+            <span style="color:white;font-size:22px;">
+                <strong >calorie calculator</strong>
+            </span>
+            </div>
+        </fieldset>
+        <fieldset class="personal-details"style="border-bottom-width:0px;">
+            <div class="row">
+                <span class="one" style="padding-left:12px;">
+                    <strong><span style="color:red">*</span>weight</strong>
+                    <input type="number" min="1" max="700" id=m1 required>
+                    <abbr id="weight-abbr" name="pounds">lbs</abbr>
+                </span>
+                <span class="two" style="padding-left:1em">
+                    <strong><span style="color:red">*</span>height</strong>
+                    <input type="number" min="1" max="10" id=m2>
+                    <abbr id="height-ft" name="feet"><span style="color:red">*</span>ft</abbr>
+                    <input type="number" min="0" max="12" id=m3>
+                    <abbr id="height-in" name="inches">in</abbr>
+                </span>
+                <span style="padding-left:1em">
+                    <strong><span style="color:red">*</span>age</strong>
+                    <input type="number" min="1" max="100" id=m4>
+                </span>
+            </div>
+            <br>
+            <div>
+                <span>
+                    <strong><span style="color:red">*</span>Gender</strong>
+                    <input type="radio" name="gender" value="M"  id=r3>
+                    <label for="r3">male</label>
+                    <input type="radio" name="gender" value="F"  id=r4>
+                    <label for="r4">female</label>
+                </span>
+            </div>
+        </fieldset>
+        <fieldset style="border-bottom-width:0px;">
+            <div>
+
+                <span>
+                    <img src="#" id="img1"border="0" alt="activity" height="100" width="100" style="display:none;padding: 5px"  />
+                    <strong><span style="color:red">*</span>Activity</strong>
+                    <select class="choose" placeholder="select an activity" id=r5>
+                        <option value="" disabled selected>choose an activity</option>
+                        <option value="16">Run</option>
+                        <option value="9">Walk</option>
+                        <option value="11">Bike</option>
+                        <option value="12">Gym workout</option>
+                    </select>
+                </span>
+                <span style="padding-left:1em">
+                    <strong><span style="color:red">*</span>Distance</strong>
+                    <input type="number" min="0" max="1000" id=m5>
+                    <abbr><span style="color:red">*</span>miles</abbr>
+                </span>
+            </div>
+            <br>
+            <div>
+                <strong><span style="color:red">*</span>Duration</strong>
+                <input type="number" min="0" max="24" placeholder="hh" id=m6>:
+                <input type="number" min="0" max="59" placeholder="mm" id=m7>:
+                <input type="number" min="0" max="59" placeholder="ss" id=m8>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div id="work" style="display: none;">
+
+                <span>calories burned {{a14}}</span>
+            </div>
+            <div id="water" style="display: none;">Target Daily Water Intake  {{w1}}  oz</div>
+        </fieldset>
+        </form>
+    <div style="padding-left: 440px; display:inline-block;">
+        <button id="btn"ng-click="workout()">workout</button>
+        <button id="btn"ng-click="water()">Get water</button>
+    </div>
+</div>
+<div id="Recepie" class="tabcontent" data-ng-controller="FoodCalorie">
+    <center>
+        <div ><h1 class="text-center" style="color: #496ebc"> SEARCH FOR A RECIPE </h1></div><br><BR>
+        <div>
+            <div class="form-inline" >
+                <input type="text" style="width:400px;" class="form-control" name="recepie" placeholder="Enter an item.." data-ng-model="recepie">
+                <button name="recepie" class="btn btn-primary" style="width:250px;" data-ng-click="getRecepies()">Search</button>
+            </div> <div><br><br>
+
+            <div class="row">
+                <div class="col-sm-5">
+                    <h2 style="color:#d9534f;">{{label[0]}}</h2></div>
+                <div class="col-sm-5"> <h3 id="l1" style="color:#5cb85c;display:none;">Calories:{{label2[0]}}</h3>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <h4 id="l2" style="color:#428bca;display:none;">INGREDIENTS</h4>
+                    <li style="center:none;list-style:none;" data-ng-repeat="x in label1[0]">{{x}}</li><br>
+                    <h4>  <a href="{{label4[0]}}" id="l3" style="display:none;">Instructions For Recipe</a></h4></div>
+
+                <div class="col-sm-5">     <img class="img-responsive"  width="270" height="230"; src="{{label3[0]}}"></div>
+            </div>
+        </div><br><br>
+            <div>
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2 style="color:#d9534f;">{{label[1]}}</h2></div>
+                    <div class="col-sm-5"> <h3 id="l4" style="color:#5cb85c;display:none">Calories:{{label2[1]}}</h3>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h4 id="l5" style="color:#428bca;display:none;"> INGREDIENTS</h4> <li style="center:none;list-style:none;" data-ng-repeat="x in label1[1]">{{x}}</li><br>
+                        <h4>  <a href="{{label4[1]}}" id="l6" style="display:none;">Instructions For Recipe</a></h4></div>
+
+
+                    <div class="col-sm-5">     <img class="img-responsive"  width="270" height="230"; src="{{label3[1]}}"></div>
+                </div>
+            </div> <br><br>
+            <div>
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2 style="color:#d9534f;">{{label[2]}}</h2></div>
+                    <div class="col-sm-5"> <h3 id="l7" style="color:#5cb85c;display:none">Calories:{{label2[2]}}</h3>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h4 id="l8" style="color:#428bca;display:none;"> INGREDIENTS</h4> <li  style="list-style:none;" data-ng-repeat="x in label1[2]">{{x}}</li><br>
+                        <h4>  <a href="{{label4[2]}}"id="l9" style="display:none;">Instructions For Recipe</a></h4></div>
+
+
+                    <div class="col-sm-5">     <img class="img-responsive"  width="270" height="230"; src="{{label3[2]}}"></div>
+                </div>
+            </div>
+            <div>
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2 style="color:#d9534f;">{{label[3]}}</h2></div>
+                    <div class="col-sm-5"> <h3 id="l10" style="color:#5cb85c;display:none">Calories:{{label2[3]}}</h3>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h4 id="l11" style="color:#428bca;display: none;"> INGREDIENTS</h4> <li style="list-style:none;" data-ng-repeat="x in label1[3]">{{x}}</li><br>
+                        <h4>  <a href="{{label4[3]}}" id="l12" style="display:none";>Instructions For Recipe</a></h4></div>
+
+
+                    <div class="col-sm-5">     <img class="img-responsive"  width="270" height="230"; src="{{label3[3]}}"></div>
+                </div>
+            </div> <br><br>
+
+        </div>
+
+
+
+
+        <br><br><br><br><br><br><br>
+
+    </center>
+
+
+</div>
+<div id="GYM" class="tabcontent" data-ng-controller="FoodCalorie" style="background-color:#F7F7F7; text-align: center">
+
+
+    <div class="menu" id="div_SearchContainer">
+        <h1 align="absolute" style="text-align: center; color: #496ebc">Search for the GYM's  near by</h1>
+        <br>
+        <input type="text" id="txt_placeName" placeholder="Enter the place you want to search" />
+
+        <button id="btn_getReview" ng-click="getvenues()">Get Venues</button>
+    </div>
+    <div id="div_VenueList"  style="padding-top:70px; ">
+        <img  id="img2"src="https://d13yacurqjgara.cloudfront.net/users/576057/screenshots/2367607/48_animations_dribbble.gif"  width="450" height="330" border="0" alt="GYM" />
+
+            <div  id= "brahmani"style=" padding-top: 40px;font-size: 18px; color: #000; text-align: center !important; list-style: none; display:none">
+                <p > <span >Name: Downtown Fitness Works</span>
+                    </br>
+                    Adress:922 Walnut Street # 404, Kansas City
+
+</p>
+                <p > <span >Name: Onelife Fitness - Kansas City</span>
+                    </br>
+                    Adress:1261 Main Street, Kansas City
+
+                </p>
+                <p > <span >Name: Club 1040 </span>
+                    </br>
+                    Adress:1301 Main Street, Kansas City
+
+                </p>
+                <div>
+
+
+    </div>
+</div>
+
+<script>
+    function move() {
+       self.location = "Login.html";
+
+    }
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    
+    
+
+</script>
+</body>
+</html>
+<script>
+var app=angular.module('Food', []);
+app.controller('FoodCalorie', function ($scope,$http) {
+    var calories;
+
+    $scope.getvenues = function () {
+
+        var placeEntered = document.getElementById("txt_placeName").value;
+
+        {
+            //This is the API that gives the list of venues based on the place and search query.
+            $http.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=39.0997265,-94.5785667&radius=500&type=gym&key=AIzaSyCNt-ShhFX0jz3fNOKF1D1XcEV-L6j18cI').success(function (data) {
+
+
+                if (data != null && data.results != null ) {
+
+                    for (var i = 0; i < 5; i++) {
+
+                        $scope.results[i] = {
+                            "name": data.results[i].name,
+
+                            "id": data.results[i].vicinity
+                        };
+
+                    }
+                }
+
+            })
+
+        }
+
+        document.getElementById("img2").style.display = 'none';
+        document.getElementById("brahmani").style.display='block'
+
+
+    };
+    $scope.getNutrition = function () {
+
+        $http.get('https://api.nutritionix.com/v1_1/search/' + $scope.search + '?results=0%3A20&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Citem_id%2Cbrand_id&appId=fd1db59d&appKey=bd775c68f0605d50cbdfc1aba80c79a9')
+            .success(function (data) {
+            console.log(data);
+            $scope.item_id=data.hits[0]._id;
+            $http.get('https://api.nutritionix.com/v1_1/item?id='+ $scope.item_id+'&appId=fd1db59d&appKey=bd775c68f0605d50cbdfc1aba80c79a9')
+                .success(function (data) {
+                console.log(data);
+                $scope.calories=Math.round(data.nf_calories);
+                $scope.nf_calories_from_fat=data.nf_calories_from_fat;
+                $scope.nf_total_fat=data.nf_total_fat;
+                calories = data.nf_calories;
+                console.log("Calories");
+                console.log(calories);
+                var cal= localStorage.getItem("Email");
+
+                $scope.storeCalories(data.nf_calories,cal);
+            });
+        });
+    };
+
+    $scope.storeCalories = function (calories1,mail1) {
+        console.log("Inside Store Calories");
+        console.log(calories1);
+        var d = new Date();
+        var s= d.toDateString();
+        var mail = mail1;
+        var con = $http({
+            method: 'POST',
+            url: 'https://api.mongolab.com/api/1/databases/aseproject/collections//ccounter?apiKey=2z498heyqmPly8Y59Hkvm_h3_NhP6ZPs',
+            data: JSON.stringify({
+                Date: s,
+                BCalories: calories1,
+                email:mail
+            }),
+            contentType: "application/json"
+        }).success(function (data) {
+            console.log("Success");
+        });
+    };
+
+    $scope.getNutrition1 = function () {
+
+        $http.get('https://api.nutritionix.com/v1_1/search/' + $scope.search1 + '?results=0%3A20&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Citem_id%2Cbrand_id&appId=fd1db59d&appKey=bd775c68f0605d50cbdfc1aba80c79a9').success(function (data) {
+            console.log(data);
+            $scope.item_id1=data.hits[0]._id;
+            $http.get('https://api.nutritionix.com/v1_1/item?id='+ $scope.item_id1+'&appId=fd1db59d&appKey=bd775c68f0605d50cbdfc1aba80c79a9'). success(function (data) {
+                console.log(data);
+                $scope.calories1=Math.round(data.nf_calories);
+                $scope.calories_from_fat1=data.nf_calories_from_fat;
+                $scope.total_fat1=data.nf_total_fat;
+            });
+        });
+    };
+    $scope.getNutrition2 = function () {
+
+        $http.get('https://api.nutritionix.com/v1_1/search/' + $scope.search2 + '?results=0%3A20&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Citem_id%2Cbrand_id&appId=fd1db59d&appKey=bd775c68f0605d50cbdfc1aba80c79a9').success(function (data) {
+            console.log(data);
+            $scope.item_id2=data.hits[0]._id;
+            $http.get('https://api.nutritionix.com/v1_1/item?id='+ $scope.item_id2+'&appId=fd1db59d&appKey=bd775c68f0605d50cbdfc1aba80c79a9').success(function (data) {
+                console.log(data);
+                $scope.calories2=Math.round(data.nf_calories);
+                $scope.calories_from_fat2=data.nf_calories_from_fat;
+                $scope.total_fat2=data.nf_total_fat;
+            });
+        });
+    };
+
+    $scope.getNutrition3 = function () {
+
+        $http.get('https://api.nutritionix.com/v1_1/search/' + $scope.search3 + '?results=0%3A20&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Citem_id%2Cbrand_id&appId=fd1db59d&appKey=bd775c68f0605d50cbdfc1aba80c79a9').success(function (data) {
+            console.log(data);
+            $scope.item_id3=data.hits[0]._id;
+            $http.get('https://api.nutritionix.com/v1_1/item?id='+ $scope.item_id3+'&appId=fd1db59d&appKey=bd775c68f0605d50cbdfc1aba80c79a9').success(function (data) {
+                console.log(data);
+                $scope.calories3=Math.round(data.nf_calories);
+                $scope.calories_from_fat3=data.nf_calories_from_fat;
+                $scope.total_fat3=data.nf_total_fat;
+            });
+        });
+    };
+$scope.OpenPopupCenter=function(pageURL, title, w, h) {
+        var left = (screen.width - w) / 2;
+        var top = (screen.height - h) / 4;  // for 25% - devide by 4  |  for 33% - devide by 3
+        var targetWin = window.open('popup.html', title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+
+};
+    $scope.getRecepies=function(){
+        $http.get('https://api.edamam.com/search?q='+$scope.recepie+'&app_id=2ae886f0&app_key=947e59ea864049a4039e6588ee7afb9e&from=0&to=5').success(function (data) {
+            console.log(data);
+
+            for(var i=0;i<4;i++) {
+                $scope.label = data.hits[i].recipe.label;
+                $scope.label1 = data.hits[i].recipe.ingredientLines;
+                $scope.label2 = data.hits[i].recipe.calories;
+                $scope.label3 = data.hits[i].recipe.image;
+            }
+        });
+
+
+    };
+    $scope.getRecepies=function(){
+        $http.get('https://api.edamam.com/search?q='+$scope.recepie+'&app_id=2ae886f0&app_key=947e59ea864049a4039e6588ee7afb9e&from=0&to=5').success(function (data) {
+            console.log(data);
+            $scope.label=new Array();
+            $scope.label1=new Array();
+            $scope.label2=new Array();
+            $scope.label3=new Array();
+            $scope.label4=new Array();
+            for(var i=0;i<4;i++) {
+                $scope.label[i] = data.hits[i].recipe.label;
+                $scope.label1[i] = data.hits[i].recipe.ingredientLines;
+                $scope.label2[i] =Math.round(data.hits[i].recipe.calories);
+                $scope.label3[i] = data.hits[i].recipe.image;
+                $scope.label4[i] = data.hits[i].recipe.url;
+
+            }
+
+            document.getElementById("l1").style.display = 'block';
+            document.getElementById("l2").style.display = 'block';
+            document.getElementById("l3").style.display = 'block';
+            document.getElementById("l4").style.display = 'block';
+            document.getElementById("l5").style.display = 'block';
+            document.getElementById("l6").style.display = 'block';
+            document.getElementById("l7").style.display = 'block';
+            document.getElementById("l8").style.display = 'block';
+            document.getElementById("l9").style.display = 'block';
+            document.getElementById("l10").style.display = 'block';
+            document.getElementById("l11").style.display = 'block';
+            document.getElementById("l12").style.display = 'block';
+
+
+
+        });
+
+
+    };
+    $scope.water = function () {
+        var s1 = document.getElementById("m1").value;
+        var w=0;
+
+        w = Math.round(s1 * 0.6 + 12);
+        $scope.w1=w
+        document.getElementById("water").style.display='block';
+
+    };
+
+    $scope.workout = function () {
+        var a2 = document.getElementById("m1").value;
+        a3 = parseInt((document.getElementById("m2").value)*12);
+        a4=parseInt(document.getElementById("m3").value);
+        a5=parseInt(a3+a4);
+        a6=parseInt(document.getElementById("m4").value);
+        if(document.getElementById("r3").checked) {
+            var a7 = document.getElementById("r3").value;
+        }if(document.getElementById("r4").checked){
+            var a7 = document.getElementById("r4").value;
+        }
+        var a8=document.getElementById("r5").value;
+        var a9=document.getElementById("m5").value;
+        var a10=parseInt((document.getElementById("m6").value)*3600);
+        var a11=parseInt((document.getElementById("m7").value))*60;
+        var a12=parseInt(document.getElementById("m8").value);
+        var a13=a10+a11+a12;
+        var workout;
+        var url = "http://www.mapmyfitness.com/workout/calculate/calories/?measurement_units=english&weight="+a2+"&height="+a5+"&age="+a6+"&sex="+a7+"&activity_type="+a8+"&distance="+a9+"&duration="+a13;
+        $http({method: 'Get', url: url, contentType: "application/json" })
+            .success(function (data) {
+                console.log(data);
+                $scope.a14= data.output.value;
+                res = data.output.value;
+                workout = data.output.value;
+            })
+        console.log(workout);
+
+        var type = document.getElementById("r5").value;
+        if( type ==16)
+        {
+            var src1 ="http://hasnaa.roro44.com/uploads/2013/01/62.gif";
+        }
+        else if(type==9)
+        {
+            var src1="https://s-media-cache-ak0.pinimg.com/originals/dc/62/38/dc62389d416fe466fd88d3c29c31f8c6.gif";
+        }
+        else if(type == 11)
+        {
+            var src1="http://www.picgifs.com/graphics/c/cycling/graphics-cycling-635367.gif";
+        }
+        else{
+            var src1="http://www.animaatjes.de/bilder/f/fitness/3.gif" ;
+        }
+
+        document.getElementById("img1").src =src1;
+        document.getElementById("img1").style.display = 'block'
+        document.getElementById("work").style.display='block';
+
+        $scope.updateCalories(workout);
+    };
+
+
+
+    $scope.updateCalories = function (calories1) {
+
+        console.log("Inside update Calories");
+        var con = $http({
+            method: 'PUT',
+            url: 'https://api.mongolab.com/api/1/databases/aseproject/collections//ccounter?q={"email": "bkanikanti1992@gmail.com"}&apiKey=2z498heyqmPly8Y59Hkvm_h3_NhP6ZPs',
+            data: JSON.stringify({
+                BCalories: 100
+            }),
+            contentType: "application/json"
+        }).success(function (data) {
+            console.log("Success");
+        });
+    };
+    
+});
+
+
+
+
+</script>
+
+
+
+<style>
+    #btn {
+        background-color:#428bca;
+        -moz-border-radius:0px;
+        -webkit-border-radius:0px;
+        border-radius:0px;
+        border:1px solid #428bca;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:17px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #283966;
+        height: 30px;
+
+    }
+    #btn:active {
+        position:relative;
+        top:1px;
+    }
+    .menu input{
+        width: 290px;
+        background: transparent;
+        border: 2px solid #428bca;
+        border-radius: 4px;
+        color: #5e5e5e;
+        font-family: 'Exo', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 10px;
+        margin-top: 10px;
+    }
+    .menu button{
+        width: 180px;
+        height:40px;
+        background:#428bca;
+        border:  2px solid #ffffff;
+        cursor: pointer;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Exo', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 6px;
+        margin-top: 10px;
+    }
+
+    caption {
+        font-size: 1.6em;
+        font-weight: 400;
+        padding: 10px 0;
+    }
+
+</style>
+
+
+

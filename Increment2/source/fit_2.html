@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="fitness">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>implementing the url</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <form id="workout-form" style="width:40%">
+        <fieldset class="units">
+            <div>
+            <span>
+                <strong>calorie calculator</strong><!--to darken-->
+            </span>
+            </div>
+        </fieldset>
+        <fieldset class="personal-details">
+            <div class="row">
+                <span class="one">
+                    <strong>weight</strong>
+                    <input type="number" min="1" max="700" id=m1>
+                    <abbr id="weight-abbr" name="pounds">lbs</abbr>
+                </span>
+                <span class="two" style="padding-left:1em">
+                    <strong>height</strong>
+                    <input type="number" min="1" max="10" id=m2>
+                    <abbr id="height-ft" name="feet">ft</abbr>
+                    <input type="number" min="0" max="12" id=m3>
+                    <abbr id="height-in" name="inches">in</abbr>
+                </span>
+                <span style="padding-left:1em">
+                    <strong>age</strong>
+                    <input type="number" min="1" max="100" id=m4>
+                </span>
+            </div>
+            <br>
+            <div>
+                <span>
+                    <strong>Gender</strong>
+                    <input type="radio" name="gender" value="M"  id=r3>
+                    <label for="r3">male</label>
+                    <input type="radio" name="gender" value="F"  id=r4>
+                    <label for="r4">female</label>
+                </span>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div>
+                <span>
+                    <strong>Activity</strong>
+                    <select class="choose" placeholder="select an activity" id=r5>
+                        <option value="" disabled selected>choose an activity</option>
+                        <option value="16">Run</option>
+                        <option value="9">Walk</option>
+                        <option value="11">Bike</option>
+                        <option value="12">Gym workout</option>
+                    </select>
+                </span>
+                <span style="padding-left:1em">
+                    <strong>Distance</strong>
+                    <input type="number" min="0" max="1000" id=m5>
+                    <abbr>miles</abbr>
+                </span>
+            </div>
+            <br>
+            <div>
+                <strong>Duration</strong>
+                <input type="number" min="0" max="24" placeholder="hh" id=m6>:
+                <input type="number" min="0" max="59" placeholder="mm" id=m7>:
+                <input type="number" min="0" max="59" placeholder="ss" id=m8>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div>
+                <p>{{a14}}</p>
+                <span>calories burned</span>
+            </div>
+        </fieldset>
+    </form>
+    <button ng-click="workout()">workout</button>
+</div>
+<script>
+    angular.module('fitness', [])
+        .controller('myCtrl', function($scope, $http) {
+            $scope.workout = function () {
+
+                var a2 = document.getElementById("m1").value;
+                a3 = parseInt((document.getElementById("m2").value)*12);
+                a4=parseInt(document.getElementById("m3").value);
+                a5=parseInt(a3+a4);
+                a6=parseInt(document.getElementById("m4").value);
+                if(document.getElementById("r3").checked) {
+                    var a7 = document.getElementById("r3").value;
+                }if(document.getElementById("r4").checked){
+                    var a7 = document.getElementById("r4").value;
+                }
+                var a8=document.getElementById("r5").value;
+                var a9=document.getElementById("m5").value;
+                var a10=parseInt((document.getElementById("m6").value)*3600);
+                var a11=parseInt((document.getElementById("m7").value))*60;
+                var a12=parseInt(document.getElementById("m8").value);
+                var a13=a10+a11+a12;
+                var url = "http://www.mapmyfitness.com/workout/calculate/calories/?measurement_units=english&weight="+a2+"&height="+a5+"&age="+a6+"&sex="+a7+"&activity_type="+a8+"&distance="+a9+"&duration="+a13;
+                $http({method: 'Get', url})
+                    .success(function (data) {
+                        console.log(data);
+                        $scope.a14= data.output.value;
+
+
+                    })
+            }
+
+        });
+</script>
+</body>
+</html>

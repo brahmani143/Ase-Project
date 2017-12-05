@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <script type="text/javascript">
+        window.onload = function () {
+            var chart = new CanvasJS.Chart("chartContainer",
+                {
+                    title:{
+                        text: "How my time is spent in a week?",
+                        fontFamily: "arial black"
+                    },
+                    animationEnabled: true,
+                    legend: {
+                        verticalAlign: "bottom",
+                        horizontalAlign: "center"
+                    },
+                    theme: "theme1",
+                    data: [
+                        {
+                            type: "pie",
+                            indexLabelFontFamily: "Garamond",
+                            indexLabelFontSize: 20,
+                            indexLabelFontWeight: "bold",
+                            startAngle:0,
+                            indexLabelFontColor: "MistyRose",
+                            indexLabelLineColor: "darkgrey",
+                            indexLabelPlacement: "inside",
+                            toolTipContent: "{name}: {y}mg",
+                            showInLegend: true,
+                            indexLabel: "#percent%",
+                            dataPoints: [
+                                {  y: 14.8, name: "carbohydrates", legendMarkerType: "triangle"},
+                                {  y: 9, name: "protein", legendMarkerType: "square"},
+                                {  y: 2, name: "TotalFat", legendMarkerType: "circle"}
+                            ]
+                        }
+                    ]
+                });
+            chart.render();
+        }
+    </script>
+    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+</body>
+
+</html>
